@@ -70,8 +70,8 @@ Emit the provided function when one line of the file is read. The handler functi
 
 - `line`: a `string` with the read line.
 - `index`: an `integer` with the line number. The line counter starts in 1.
-- `start`: an `integer` with the start position in the buffer.
-- `end`: an `integer` with the end position in the buffer.
+- `start`: an `integer` with the start position of the line in the file.
+- `end`: an `integer` with the end position of the line in the file.
 - `length`: an `integer` with the number of bytes read.
 
 You can stop the file reading at a particular line by making the callback function return `false`.  
