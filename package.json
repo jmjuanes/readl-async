@@ -1,8 +1,8 @@
 {
   "name": "readl-async",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Read a file line by line asynchronously",
-  "keywords": [ "file", "read", "line", "line-by-line", "fs", "readline", "linebyline", "readl", "readlines", "async", "asynchronously" ],
+  "keywords": [ "file", "read", "line", "line-by-line", "fs", "readline", "linebyline", "readl", "readlines", "async", "asynchronously", "asynchronous" ],
   "author": "Josemi Juanes <josemijuanes@gmail.com>",
   "main": "./index.js",
   "repository": { "type": "git", "url": "https://github.com/jmjuanes/readl-async.git" },
