@@ -20,7 +20,7 @@ $ npm install --save readl-async
 var readl = require('readl-async');
 
 //Initialize the reader object
-var reader = new readl('file.txt', { encoding: 'utf8'});
+var reader = new readl('file.txt', { encoding: 'utf8' });
 
 //Emit this function when one line is read:
 reader.on('line', function(line, index, start, end)
@@ -64,7 +64,7 @@ An `object` with the following options:
 - `encoding`: set the encoding. Default: `utf8`.
 - `emptyLines`: set it to `false` if you want to omit the empty lines. Default: `true`.
 - `start`: start position. Default is 0.
-- `readChunk`: set the chunk size. Default is 1024.
+- `chunk`: set the chunk size. Default is 1024.
 - `endl`: set the end-line character. Default is `0x0a`.
 
 ### reader.read()
