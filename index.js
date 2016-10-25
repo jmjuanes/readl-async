@@ -17,8 +17,8 @@ var readl = function(file, opt)
   //Check the encoding option
   this._encoding = (typeof opt.encoding === 'undefined') ? 'utf8' : opt.encoding.toString();
 
-  //Check the readChunk option
-  this._readChunk = (typeof opt.readChunk === 'undefined') ? 1024 : opt.readChunk;
+  //Check the chunk option
+  this._chunk = (typeof opt.chunk === 'undefined') ? 1024 : opt.chunk;
 
   //Check the line break option
   this._endl = (typeof opt.endl === 'undefined') ? 0x0a : opt.endl;
@@ -98,10 +98,10 @@ readl.prototype._getBuffer = function(cb)
   var self = this;
 
   //Create the buffer
-  var buff = new Buffer(this._readChunk);
+  var buff = new Buffer(this._chunk);
 
   //Get the chunk
-  fs.read(this._fd, buff, 0, this._readChunk, this._position, function(error, bytesRead, buff)
+  fs.read(this._fd, buff, 0, this._chunk, this._position, function(error, bytesRead, buff)
   {
     //Check for error
     if(error){ return self._emit('error', [ error ]); }
@@ -110,7 +110,7 @@ readl.prototype._getBuffer = function(cb)
     if(bytesRead === 0){ return cb(false); }
 
     //Compare with the chunk size
-    if(bytesRead < self._readChunk){ buff = buff.slice(0, bytesRead); }
+    if(bytesRead < self._chunk){ buff = buff.slice(0, bytesRead); }
 
     //Get the line end
     var index = buff.indexOf(self._endl);
