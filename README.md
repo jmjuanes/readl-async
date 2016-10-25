@@ -42,6 +42,9 @@ reader.on('error', function(error)
   //Do some stuff with the error
   // ....
 });
+
+//Start reading the file
+reader.read();
 ```
 
 ## API
@@ -62,7 +65,11 @@ An `object` with the following options:
 - `emptyLines`: set it to `false` if you want to omit the empty lines. Default: `true`.
 - `start`: start position. Default is 0.
 - `readChunk`: set the chunk size. Default is 1024.
-- `endl`: set the end-line character. Default is `0x0a`
+- `endl`: set the end-line character. Default is `0x0a`.
+
+### reader.read()
+
+Starts the file read process.
 
 ### reader.on('line', handler)
 
