@@ -92,7 +92,7 @@ readl.prototype._emit = function(name, args)
 };
 
 //Get a buffer from file
-readl.prototype._getBuffer = function(cb)
+readl.prototype._getBuffer = function(chunk, cb)
 {
   //Save this
   var self = this;
@@ -100,10 +100,10 @@ readl.prototype._getBuffer = function(cb)
   //Create the buffer
   //new Buffer is deprecated: https://nodejs.org/api/buffer.html#buffer_new_buffer_size
   //var buff = new Buffer(this._chunk);
-  var buff = Buffer.alloc(this._chunk);
+  var buff = (typeof Buffer.alloc === 'undefined') ? new Buffer(chunk) : Buffer.alloc(chunk);
 
   //Get the chunk
-  fs.read(this._fd, buff, 0, this._chunk, this._position, function(error, bytesRead, buff)
+  fs.read(this._fd, buff, 0, chunk, this._position, function(error, bytesRead, buff)
   {
     //Check for error
     if(error){ return self._emit('error', [ error ]); }
@@ -112,7 +112,7 @@ readl.prototype._getBuffer = function(cb)
     if(bytesRead === 0){ return cb(false); }
 
     //Compare with the chunk size
-    if(bytesRead < self._chunk){ buff = buff.slice(0, bytesRead); }
+    if(bytesRead < chunk){ buff = buff.slice(0, bytesRead); }
 
     //Get the line end
     var index = buff.indexOf(self._endl);
@@ -132,7 +132,7 @@ readl.prototype._getLine = function(cb)
   var self = this;
 
   //Get the buffer
-  this._getBuffer(function(line)
+  this._getBuffer(this._chunk, function(line)
   {
     //Check for exit
     if(line === false){ return cb(); }
