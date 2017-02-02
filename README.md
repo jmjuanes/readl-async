@@ -4,6 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/readl-async.svg?style=flat-square)](https://www.npmjs.com/package/readl-async)
 [![npm](https://img.shields.io/npm/dt/readl-async.svg?style=flat-square)](https://www.npmjs.com/package/readl-async)
+[![npm](https://img.shields.io/npm/l/readl-async.svg?style=flat-square)](https://github.com/jmjuanes/readl-async)
 
 ## Install
 
@@ -64,7 +65,7 @@ An `object` with the following options:
 - `encoding`: set the encoding. Default: `utf8`.
 - `emptyLines`: set it to `false` if you want to omit the empty lines. Default: `true`.
 - `start`: start position. Default is 0.
-- `chunk`: set the chunk size. Default is 1024.
+- `chunk`: set the chunk size. Default is `10240`.
 - `endl`: set the end-line character. Default is `0x0a`.
 
 ### reader.read()
