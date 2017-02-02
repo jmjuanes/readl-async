@@ -98,7 +98,9 @@ readl.prototype._getBuffer = function(cb)
   var self = this;
 
   //Create the buffer
-  var buff = new Buffer(this._chunk);
+  //new Buffer is deprecated: https://nodejs.org/api/buffer.html#buffer_new_buffer_size
+  //var buff = new Buffer(this._chunk);
+  var buff = Buffer.alloc(this._chunk);
 
   //Get the chunk
   fs.read(this._fd, buff, 0, this._chunk, this._position, function(error, bytesRead, buff)
